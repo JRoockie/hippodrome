@@ -1,10 +1,14 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mockStatic;
@@ -14,26 +18,30 @@ public class HorseTest {
 
     @Test
     public void testNull() {
-        IllegalArgumentException exp = Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse(null, 2));
+        IllegalArgumentException exp = Assertions
+                .assertThrows(IllegalArgumentException.class, () -> new Horse(null, 2));
         assertEquals("Name cannot be null.", exp.getMessage());
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "\t", "\n"})
     public void testCheckSymbol(String s) {
-        IllegalArgumentException exp = Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse(s, 3));
+        IllegalArgumentException exp = Assertions
+                .assertThrows(IllegalArgumentException.class, () -> new Horse(s, 3));
         assertEquals("Name cannot be blank.", exp.getMessage());
     }
 
     @Test
     public void testSpeedTest() {
-        IllegalArgumentException exp = Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse("s", -1));
+        IllegalArgumentException exp = Assertions
+                .assertThrows(IllegalArgumentException.class, () -> new Horse("s", -1));
         assertEquals("Speed cannot be negative.", exp.getMessage());
     }
 
     @Test
     public void testDistance() {
-        IllegalArgumentException exp = Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse("sas", 5, -1));
+        IllegalArgumentException exp = Assertions
+                .assertThrows(IllegalArgumentException.class, () -> new Horse("sas", 5, -1));
         assertEquals("Distance cannot be negative.", exp.getMessage());
     }
 
@@ -83,6 +91,7 @@ public class HorseTest {
             assertEquals(distance, horse.getDistance(), 0.001);
         }
     }
+
 
 
 }
