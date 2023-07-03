@@ -1,7 +1,12 @@
+package myHippodrome;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import static java.util.Objects.isNull;
 
 public class Horse {
-
+private static final Logger log = LoggerFactory.getLogger(Horse.class);
     private final String name;
     private final double speed;
     private double distance;
