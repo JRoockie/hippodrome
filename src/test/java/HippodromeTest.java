@@ -78,12 +78,7 @@ public class HippodromeTest {
             }
         }
     }
-    @Test
-    @Disabled
-    @Timeout(value = 22, unit = TimeUnit.SECONDS)
-    public void testMain() throws Exception {
-        Main.main(new String[]{});
-    }
+
 
 
 }
